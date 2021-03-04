@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,12 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterComponent implements OnInit {
 
   register:any = {};
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   registerUser() {
+    this.router.navigate(['/login']);
     console.log(this.register);
     localStorage.setItem('user', JSON.stringify(this.register));
   }
