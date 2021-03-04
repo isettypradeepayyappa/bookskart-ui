@@ -1,25 +1,24 @@
-
 <div class="d-flex flex-column justify-content-center align-items-center h-100">
-    
-<div class="card" style="width: 18rem;">
+
+  <div class="card" style="width: 18rem;">
     <div class="card-body">
-        <form>
-          <h1 class= "text-center col-md-12">Login </h1>
-            <div class="mb-3">
-              <label for="loginID" class="form-label">LoginID</label>
-              <input type="text" class="form-control" id="loginID" name="loginID" [(ngModel)]="credentials.loginID" #loginID="ngModel" placeholder="loginID" >
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="credentials.password" #password="ngModel" placeholder="Password">
-            </div>
-            
-            <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-primary" (click)="login()">Submit</button>
+      <form>
+        <h1 class="text-center col-md-12">Login </h1>
+        <div class="mb-3">
+          <label for="loginID" class="form-label">LoginID</label>
+          <input type="text" class="form-control" id="loginID" name="loginID" [(ngModel)]="credentials.loginID"
+            #loginID="ngModel" placeholder="loginID">
         </div>
-          </form>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="password"
+            [(ngModel)]="credentials.password" #password="ngModel" placeholder="Password">
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-primary" (click)="login()">Submit</button>
+        </div>
+      </form>
     </div>
   </div>
-  </div>
-
-
+</div>
