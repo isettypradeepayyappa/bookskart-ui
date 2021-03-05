@@ -9,6 +9,9 @@ import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './home/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { BooksHomeComponent } from './books-home/books-home.component';
+import { AllBooksComponent } from './books-home/all-books/all-books.component';
+import { BookInfoComponent } from './books-home/book-info/book-info.component';
 
 
 @NgModule({
@@ -18,6 +21,9 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
+    BooksHomeComponent,
+    AllBooksComponent,
+    BookInfoComponent,
     
   ],
   imports: [

@@ -1,0 +1,13 @@
+<div class="container row mx-5 mt-5 mb-0 pb-5 justify-content-center">
+<div class="card mb-3 mr-3" *ngFor="let card of cards" style="width: 15rem;" (click)="bookInfo(card.id)">
+    <img [src]="card.image" height="150px" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title mb-0">{{card.bookTitle}}</h5>
+      <div class="card-text"> by {{card.authorName}}</div>
+      <div class="card-text">₹ {{card.bookPrice}}</div>
+      <div class="text-center">
+      <a href="#" class="btn btn-sm btn-primary mt-2">Add To Cart</a>
+    </div>
+    </div>
+  </div>
+</div>
