@@ -1,58 +1,96 @@
-<div class="d-flex flex-column justify-content-center align-items-center h-100 overflow-auto">
+
+    <!-- main app container -->
    
-<div class="card" style="width: 60rem;">
-    <div class="card-body">
-<div class="container">
-            <form class="form-horizontal row" role="form" #registerForm="ngForm">
+    <div class="d-flex flex-column justify-content-center align-items-center h-100 overflow-auto">
+        <div class="card" style="width: 60rem;">
+            <div class="card-body">
+        
+        <div class="container">
+        <form class="form-horizontal row" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <h2 class="text-center col-md-12">Registration</h2>
-                <div class="form-group col-md-6">
-                    <label for="firstName" class="col-sm-12 control-label">First Name</label>
-                    <div class="col-sm-12">
-                        <input type="text" id="firstName" name="firstName" [(ngModel)]="register.firstName" #firstName="ngModel" placeholder="First Name" class="form-control" autofocus>
+
+
+            <div class="form-group col-md-6">
+                <label for="firstName" class="col-sm-12 control-label">First Name</label>
+                <div class="col-sm-12">
+                    <input type="text" formControlName="firstName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
                     </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="lastName" class="col-sm-12 control-label">Last Name</label>
-                    <div class="col-sm-12">
-                        <input type="text" id="lastName" name="lastName" [(ngModel)]="register.lastName" #lastName="ngModel" placeholder="Last Name" class="form-control" autofocus>
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="loginID" class="col-sm-12 control-label">LoginID* </label>
-                    <div class="col-sm-12">
-                        <input type="text" id="loginID" name="loginID" [(ngModel)]="register.loginID" #loginID="ngModel" placeholder="loginID" class="form-control" name= "loginID">
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="password" class="col-sm-12 control-label">Password*</label>
-                    <div class="col-sm-12">
-                        <input type="password" id="password" name="password" [(ngModel)]="register.password" #password="ngModel" placeholder="Password" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="password" class="col-sm-12 control-label">Confirm Password*</label>
-                    <div class="col-sm-12">
-                        <input type="password" id="password" name="password" [(ngModel)]="register.confirmPassword" #password="ngModel" placeholder="ConfirmPassword" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="mobileNumber" class="col-sm-12 control-label">Mobile number </label>
-                    <div class="col-sm-12">
-                        <input type="tel" id="mobileNumber" name="mobileNumber" [(ngModel)]="register.mobileNumber" #mobileNumber="ngModel" placeholder="Mobile number" class="form-control">
-                        <span class="help-block">Your phone number won't be disclosed anywhere </span>
-                    </div>
-                </div>
-                
-                <!-- <div class="form-group col-md-6">
-                    <div class="col-sm-12 col-sm-offset-12">
-                        <span class="help-block">*Required fields</span>
-                    </div>
-                </div> -->
-                <div class="d-flex justify-content-center col-md-12">
-                <button type="button" class="btn btn-primary btn-block col-md-6" (click)="registerUser()">Register</button>
+               
+               
             </div>
-            </form> <!-- /form -->
-        </div> <!-- ./container -->
-        </div>
-        </div>
-        </div>
+
+
+            <div class="form-group col-md-6">
+                <label for="firstName" class="col-sm-12 control-label">Last Name</label>
+                <div class="col-sm-12">
+                <input type="text" formControlName="lastName" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="firstName" class="col-sm-12 control-label">Email</label>
+                <div class="col-sm-12">
+                <input type="text" formControlName="email" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
+                </div>
+            </div>
+
+
+            <div class="form-group col-md-6">
+                <label for="firstName" class="col-sm-12 control-label">Password</label>
+                <div class="col-sm-12">
+                <input type="password" formControlName="password" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label  for="firstName" class="col-sm-12 control-label">Confirm Password</label>
+                <div class="col-sm-12">
+                <input type="password" formControlName="confirmPassword" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                    <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="mobileNumber" class="col-sm-12 control-label">Mobile number </label>
+                <div class="col-sm-12">
+                    <input type="tel" placeholder="Mobile number" formControlName="mobileNumber" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" />
+                    <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
+                        <div *ngIf="f.mobileNumber.errors.required">Phone Number is required</div>
+                <div *ngIf="f.mobileNumber.errors.minlength">Phone Number must be atleast 10 characters</div>
+            <div *ngIf="f.mobileNumber.errors.maxlength">Phone Number must not exceed 10 characters</div>
+            </div>
+                    <span class="help-block">Your phone number won't be disclosed anywhere </span>
+                </div>
+            </div>
+            <div class="form-group d-flex justify-content-center col-md-12">
+                <button (click)=" onSubmit()" class="btn btn-primary col-md-6">Register</button>
+            </div>
+        </form>
+  
+</div>
+</div>
+</div>
+</div>

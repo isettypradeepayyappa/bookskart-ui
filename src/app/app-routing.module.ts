@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'books-home',
     component: BooksHomeComponent,
     children: [{
+      path: '',
+      redirectTo: '/books-home/all-books',
+      pathMatch: 'full'
+    },{
       path: 'all-books',
       component: AllBooksComponent
     },{path: 'book-info/:id',

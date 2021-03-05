@@ -1,5 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
+import {MustMatch} from '../helper/match.validator'
 
 @Component({
   selector: 'app-register',
@@ -7,16 +10,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  registerForm: FormGroup;
 
-  register:any = {};
-  constructor(private router: Router) { }
+  submitted = false;
+  register: any = {};
+  constructor(private router: Router, private formBuilder: FormBuilder) { 
 
-  ngOnInit(): void {
   }
 
-  registerUser() {
-    this.router.navigate(['/login']);
-    console.log(this.register);
-    localStorage.setItem('user', JSON.stringify(this.register));
+
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+      mobileNumber: ['', [Validators.required, Validators.minLength(10),Validators.maxLength(10)]]
+    }, {
+      validator: MustMatch('password', 'confirmPassword')
+    });
   }
+
+  get f() { return this.registerForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if(this.registerForm.invalid){
+      return;
+    }
+console.log(this.registerForm)
+    this.router.navigate(['/login']);  
+}
+
 }

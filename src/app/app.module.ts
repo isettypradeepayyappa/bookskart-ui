@@ -13,6 +13,7 @@ import { BooksHomeComponent } from './books-home/books-home.component';
 import { AllBooksComponent } from './books-home/all-books/all-books.component';
 import { BookInfoComponent } from './books-home/book-info/book-info.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BookInfoComponent } from './books-home/book-info/book-info.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
